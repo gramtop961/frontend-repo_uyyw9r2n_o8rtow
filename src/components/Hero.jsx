@@ -57,6 +57,14 @@ export default function Hero() {
               Start a project
             </a>
             <a
+              href="https://calendly.com/flames-studio/intro-call"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-purple-500/40 bg-black/60 px-6 py-3 text-sm font-medium text-white/90 backdrop-blur hover:bg-purple-500/10 transition"
+            >
+              Book a call
+            </a>
+            <a
               href="#work"
               className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/60 px-6 py-3 text-sm font-medium text-white/90 backdrop-blur hover:bg-white/5 transition"
             >
