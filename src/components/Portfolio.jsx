@@ -1,74 +1,66 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 
-const items = [
-  {
-    tag: 'YouTube Series',
-    title: 'Founder Diaries: 12-episode docu-series',
-    color: 'from-sky-500/20 to-cyan-400/10',
-  },
-  {
-    tag: 'AI Edit',
-    title: 'Long-form → 12 shorts in 24h',
-    color: 'from-fuchsia-500/20 to-violet-400/10',
-  },
-  {
-    tag: 'Social Reels',
-    title: 'Kinetic captions + motion graphics pack',
-    color: 'from-emerald-500/20 to-teal-400/10',
-  },
-  {
-    tag: 'Real Estate',
-    title: 'Luxury property walkthrough + aerial',
-    color: 'from-amber-500/20 to-orange-400/10',
-  },
+const work = [
+  { title: 'YouTube Series', tag: 'Long-form' },
+  { title: 'AI Edit Showcase', tag: 'AI workflow' },
+  { title: 'Social Reels Pack', tag: 'Shorts / Reels' },
+  { title: 'Real Estate Tour', tag: 'Property' },
 ];
 
-const Portfolio = () => {
+export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative w-full bg-black py-20 text-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-10 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-4xl">Selected work</h2>
-          <a
-            href="mailto:hello@flames.studio?subject=Portfolio%20Request"
-            className="text-sm text-white/60 hover:text-white"
-          >
-            Request full portfolio →
-          </a>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          {items.map((item) => (
-            <div
-              key={item.title}
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${item.color}`}
-            >
-              <div className="p-6">
-                <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80 backdrop-blur">
-                  {item.tag}
-                </span>
-                <h3 className="mt-3 text-lg font-medium">{item.title}</h3>
-                <p className="mt-2 text-sm text-white/70">Hover to preview motion texture.</p>
-              </div>
-              {/* Motion texture */}
-              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.35),rgba(255,255,255,0)_60%)] blur-2xl transition-transform duration-300 ease-out group-hover:translate-x-6 group-hover:-translate-y-4" />
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6">
+    <section id="work" className="relative w-full bg-black py-20">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.12),transparent_60%)]" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
+        >
           <div>
-            <h4 className="text-lg font-medium">Need something specific?</h4>
-            <p className="text-sm text-white/70">Send references and goals — we’ll reply with a tailored plan and quote.</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Selected work</h2>
+            <p className="mt-3 max-w-2xl text-white/70">
+              A snapshot of recent projects. Ask for the full case study list.
+            </p>
           </div>
           <a
-            href="mailto:hello@flames.studio?subject=Custom%20Brief"
-            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black hover:bg-white/90"
+            href="mailto:hello@flames.studio?subject=Request%20full%20portfolio"
+            className="inline-flex items-center justify-center rounded-full border border-purple-500/40 bg-black px-4 py-2 text-sm font-medium text-white hover:bg-purple-500/10 transition"
           >
-            Share brief
+            Request full portfolio
           </a>
+        </motion.div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {work.map((w, idx) => (
+            <motion.div
+              key={w.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent"
+            >
+              {/* simulated thumbnail */}
+              <div className="aspect-video w-full bg-[linear-gradient(120deg,rgba(168,85,247,0.2),transparent_30%,rgba(217,70,239,0.2))]">
+                <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.2),transparent_30%),radial-gradient(circle_at_80%_70%,rgba(217,70,239,0.18),transparent_30%)]" />
+              </div>
+              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-white font-semibold">{w.title}</h3>
+                    <p className="text-sm text-white/70">{w.tag}</p>
+                  </div>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-purple-300">View</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Portfolio;
+}

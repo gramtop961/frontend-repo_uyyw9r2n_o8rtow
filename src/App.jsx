@@ -1,55 +1,56 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 
-function App() {
+function ContactStrip() {
   return (
-    <div className="min-h-screen w-full bg-black text-white">
+    <section className="relative w-full bg-black py-16">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(147,51,234,0.15),transparent_60%)]" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-6 sm:flex-row sm:items-center">
+          <div>
+            <h3 className="text-2xl font-semibold text-white">Have a brief?</h3>
+            <p className="mt-2 text-white/70">We’ll turn it into scroll-stopping video content.</p>
+          </div>
+          <a
+            href="mailto:hello@flames.studio?subject=Share%20a%20brief"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-500 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-purple-500/30 hover:brightness-110 transition"
+          >
+            Share your brief
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="w-full border-t border-white/10 bg-black">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-sm text-white/60">
+        <p>© {new Date().getFullYear()} Flames Studio. All rights reserved.</p>
+        <div className="flex items-center gap-4">
+          <a href="#services" className="hover:text-white">Services</a>
+          <a href="#work" className="hover:text-white">Work</a>
+          <a href="mailto:hello@flames.studio" className="hover:text-white">Contact</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
       <main>
         <Hero />
         <Services />
         <Portfolio />
-        {/* Contact strip */}
-        <section id="contact" className="w-full bg-black py-16">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 md:flex-row md:items-center">
-              <div>
-                <h3 className="text-xl font-semibold">Let’s create your next hit.</h3>
-                <p className="mt-1 text-sm text-white/70">Book a 15‑minute discovery call — zero fluff, clear outcomes.</p>
-              </div>
-              <div className="flex gap-3">
-                <a
-                  href="mailto:hello@flames.studio?subject=Discovery%20Call"
-                  className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black hover:bg-white/90"
-                >
-                  Email us
-                </a>
-                <a
-                  href="#portfolio"
-                  className="rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 backdrop-blur hover:border-white/30 hover:bg-white/10"
-                >
-                  See selected work
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactStrip />
       </main>
-      <footer className="border-t border-white/10 bg-black/80 py-10">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 text-sm text-white/60">
-          <p>© {new Date().getFullYear()} Flames Studio. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#portfolio" className="hover:text-white">Portfolio</a>
-            <a href="mailto:hello@flames.studio" className="hover:text-white">Contact</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
-
-export default App;
